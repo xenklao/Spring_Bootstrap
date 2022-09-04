@@ -1,0 +1,61 @@
+<table th:fragment="users_table_fragment(user)" id="usersTable" class="table table-striped">
+    <thead class="border-0">
+    <tr>
+        <th scope="col">ID</th>
+        <th scope="col">First name</th>
+        <th scope="col">Last name</th>
+        <th scope="col">Password</th>
+        <th scope="col">Age</th>
+        <th scope="col">Email</th>
+        <th scope="col">Role</th>
+        <th scope="col">Edit</th>
+        <th scope="col">Delete</th>
+    </tr>
+    </thead>
+    <tbody>
+    <th:block th:each="user : ${users}">
+
+        <tr scope="row"
+            th:attr="data-id=${user.id},
+                                        data-firstName=${user.firstName},
+                                        data-lastName=${user.lastName},
+                                        data-password=${user.password},
+                                        data-age=${user.age},
+                                        data-nickname=${user.nickName},
+                                        data-roles=${user.getRoles()}">
+
+            <td id="utId" th:text="${user.id}">Id</td>
+            <td id="utFirstName" th:text="${user.firstName}"></td>
+            <td id="utLastName" th:text="${user.lastName}"></td>
+            <td id="utPassword" th:text="${user.password}"></td>
+            <td id="utAge" th:text="${user.age}"></td>
+            <td id="utNickName" th:text="${user.nickName}"></td>
+            <td id="utRoles">
+                <th:block th:each="role : ${user.getRoles()}">
+                    <option th:text="${role.getAllRoles().getRole()}"></option>
+                </th:block>
+            </td>
+            <td>
+                <button
+                        type="button"
+                        class="btn btn-info"
+                        th:onclick="|new UserUpdater().modalUserInfoEdit('${user.id}')|"
+                        data-bs-toggle="modal"
+                        data-bs-target="#modalUserInfo">
+                    Edit
+                </button>
+            </td>
+            <td>
+                <button type="button"
+                        th:onclick="|new UserUpdater().modalUserInfoDelete('${user.id}')|"
+                        class="btn btn-danger"
+                        data-bs-toggle="modal"
+                        data-bs-target="#modalUserInfo">
+                    Delete
+                </button>
+            </td>
+
+        </tr>
+    </th:block>
+    </tbody>
+</table>

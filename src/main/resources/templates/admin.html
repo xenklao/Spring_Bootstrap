@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="ru">
+<head th:replace="layouts/head :: l_head(title='Admin page')"></head>
+<body class="bg-light">
+<div th:replace="layouts/navbar_h.html :: navbar_h(user=${user})"></div>
+
+<div class="wrapper">
+
+    <div class="navigation bg-white">
+        <ul class="nav nav-pills nav-fill flex-column text-left">
+            <li>
+                <a class="nav-link" href="/user">User</a>
+            </li>
+
+            <li>
+                <a class="nav-link active" href="/admin">Admin</a>
+            </li>
+
+        </ul>
+    </div>
+
+    <div class="block-info">
+        <div class="block-info__conntent">
+            <div class="content_title">Admin panel</div>
+            <div class="content_about_user border bg-light">
+                <div class="content_all_users__table bg-white">
+                    <nav>
+                        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                            <button class="nav-link active" id="nav-users-tab" data-bs-toggle="tab"
+                                    data-bs-target="#nav-users" type="button" role="tab" aria-controls="nav-users"
+                                    aria-selected="true">Users table
+                            </button>
+                            <button class="nav-link" id="nav-newUser-tab" data-bs-toggle="tab"
+                                    data-bs-target="#nav-newUser" type="button" role="tab" aria-controls="nav-newUser"
+                                    aria-selected="false">New User
+                            </button>
+                        </div>
+                    </nav>
+                    <div class="tab-content" id="nav-tabContent">
+                        <div class="tab-pane fade show active" id="nav-users" role="tabpanel"
+                             aria-labelledby="nav-users-tab">
+                            <div class="content_about_user__tab-content border-top border-bottom border-light ml-1 bg-light">
+                                All
+                                users
+                            </div>
+
+                            <table th:replace="/layouts/users_table.html :: users_table_fragment(user)"></table>
+
+                        </div>
+
+                        <div class="tab-pane " id="nav-newUser" role="tabpanel" aria-labelledby="nav-newUser-tab">
+                            <div class="content_about_user__tab-content border-top border-bottom border-light ml-1 bg-light">
+                                New user
+                            </div>
+                            <form class="needs-validation"  action="">
+                                <div id="newUserStack" class="vstack gap-2 col-md-5 mx-auto">
+                                    <div>First Name</div>
+                                    <input  required id="nus_firstName" class="form-control me-auto .bg-warning" type="text">
+                                    <div>Last Name</div>
+                                    <input required id="nus_lastName" class="form-control me-auto" type="text">
+                                    <div>Age</div>
+                                    <input required id="nus_age" class="form-control me-auto" type="number" min="1">
+                                    <div>Email</div>
+                                    <input required id="nus_email" class="form-control me-auto" type="email">
+                                    <div>Password</div>
+                                    <input required id="nus_password" class="form-control me-auto" type="text">
+                                    <select id="nus_selectRole">
+                                        <!--Recive data about roles from db-->
+                                        <th:block th:each="role : ${allRoles}">
+                                            <option th:attr="data-id=${role.id}"
+                                            th:value="${role.getRole()}" th:text="${role.getRole()}">
+                                        </th:block>
+                                    </select>
+                                    <button type="button" class="btn btn-success" th:onclick="|new UserUpdater().add()|">
+                                        Add new user
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<div th:replace="/layouts/modal_user_info.html :: modal_user_info_fragment"></div>
+<div th:replace="layouts/scripts :: scripts"></div>
+<script src="/public/js/UserUpdater.js"></script>
+</body>
+</html>

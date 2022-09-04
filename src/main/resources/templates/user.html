@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace="layouts/head :: l_head(title='User page')">
+</head>
+<body class="bg-light">
+<div th:replace="layouts/navbar_h.html :: navbar_h(user=${user})"></div>
+
+<div class="wrapper">
+
+    <div class="navigation bg-white">
+        <ul class="nav nav-pills nav-fill flex-column text-left">
+            <li>
+                <a class="nav-link active" href="/user">User</a>
+            </li>
+
+            <th:block th:each="role : ${user.getRoles()}">
+                <li th:if="${role.getAllRoles().getRole()} == 'ROLE_ADMIN'">
+                    <a class="nav-link" href="/admin">Admin</a>
+                </li>
+            </th:block>
+
+
+        </ul>
+    </div>
+
+
+    <div class="block-info">
+        <div class="block-info__conntent">
+            <div class="content_title">User information-page</div>
+            <div class="content_about_user border bg-light">
+                <div class="content_about_user__title border-bottom">About user</div>
+                <div class="content_about_user__table bg-white">
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">First Name</th>
+                            <th scope="col">Last Name</th>
+                            <th scope="col">Password</th>
+                            <th scope="col">Age</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Role</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr scope="row"   th:attr="data-id=${user.id},
+                                        data-firstName=${user.firstName},
+                                        data-lastName=${user.lastName},
+                                        data-password=${user.password},
+                                        data-age=${user.age},
+                                        data-nickname=${user.nickName},
+                                        data-roles=${user.getRoles()}">
+                            <td th:text="${user.id}">1</td>
+                            <td th:text="${user.firstName}">First Name</td>
+                            <td th:text="${user.lastName}">Last Name</td>
+                            <td th:text="${user.password}">Password</td>
+                            <td th:text="${user.age}">42</td>
+                            <td th:text="${user.nickName}">User@m</td>
+                            <td>
+                                <th:block th:each="role : ${user.getRoles()}">
+                                    <span th:text="${role.getAllRoles().getRole()}"></span>
+                                </th:block>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+
+
+<div th:replace="layouts/scripts :: scripts"></div>
+</body>
+</html>

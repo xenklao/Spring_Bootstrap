@@ -1,0 +1,85 @@
+.wrapper{
+    display: grid;
+    grid-template-areas: "nav_h nav_h"
+    ". ."
+    "nav info";
+    grid-auto-columns: 280px 1fr;
+}
+
+div.navbar-h {
+    position:relative;
+    grid-area: nav_h;
+    height: 60px;
+    padding: 0;
+    margin: 0;
+    min-width: 1000px;
+    width: 100%;
+}
+
+div.navbar-h div {
+    font-size: 20px;
+}
+
+div.nickname {
+    display: inline-block;
+    margin-left: 10px;
+}
+
+div.logout-button {
+    padding:0 ;
+    margin: 0;
+    position: absolute;
+    right: 20px;
+    cursor: pointer;
+}
+
+div.nickname span:nth-child(1) {
+    font-weight: bold;
+}
+.navigation {
+    grid-area: nav;
+    min-height: 100vh;
+    max-height: 100%;
+}
+.block-info {
+    grid-area: info;
+    height: 100%;
+}
+
+.block-info__conntent {
+    margin-left: 40px;
+}
+
+.block-info__conntent .content_title {
+    font-size: 52px;
+    padding-bottom: 10px;
+}
+
+.block-info__conntent .content_about_user {
+    margin-right: 40px;
+    font-size: 24px;
+    font-weight: bold;
+}
+.content_about_user__title {
+    padding-left: 24px;
+    margin-top: 14px;
+    height: 63px;
+}
+
+.content_about_user__tab-content {
+ padding: 15px;
+    font-weight: bold;
+}
+
+.content_about_user__table,
+.content_all_users__table{
+    padding: 20px 20px 20px 25px;
+    margin-bottom: 0;
+    font-size: 20px;
+    font-weight: normal;
+
+}
+
+.content_about_user__table table#usersTable {
+    border-spacing: 100px;
+}

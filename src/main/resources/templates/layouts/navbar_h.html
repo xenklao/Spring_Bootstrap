@@ -1,0 +1,11 @@
+<div th:fragment="navbar_h(user)" class="navbar-h p-3 mb-2 bg-dark text-white">
+    <div class="nickname">
+        <span th:text="${user.nickName}"></span>
+        <span>with roles :</span>
+        <th:block th:each="role:${user.getRoles()}">
+            <span th:text="${role.getAllRoles().getRole()}"></span>
+        </th:block>
+        <div class="logout-button btn btn-dark">Logout</div>
+    </div>
+    <script th:src="@{public/js/Logout.js}"></script>
+</div>

@@ -1,0 +1,22 @@
+<!-- Modal -->
+<!--TODO revice data about roles from allroles-->
+<div th:fragment="modal_user_info_fragment" class="modal fade" id="modalUserInfo" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+     aria-labelledby="modalUserInfoLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalUserInfoLabel">Modal title</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div  class="modal-body">
+                <div id="modalUserInfoBody" class="vstack gap-2 col-md-5 mx-auto">
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button id="modal-footer__actionButtonName" type="button" class="btn btn-primary" data-bs-dismiss="modal">Button</button>
+            </div>
+        </div>
+    </div>
+</div>

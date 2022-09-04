@@ -1,0 +1,21 @@
+.login-form {
+    width: 390px;
+    margin: 55px auto 0;
+    border: 1px black;
+}
+.login-form h2 {
+    font-weight: bold;
+}
+
+.login-form input {
+    height: 50px;
+}
+
+.login-form button{
+    width: 100%;
+    margin-top: 10px;
+    height: 60px;
+}
+.login-form button span {
+    font-size: 24px;
+}
